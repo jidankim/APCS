@@ -18,22 +18,34 @@ public class NumToString{
 	    teen[i] = digitToEng(i) + "teen";
 	}
 	String[] twoDigit = {"twenty". "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+	
+	if (n/10 == 0){
+	    return oneDigitToEng(n);
+	} else if (n/10 == 1){ 
+	    return teen[n%10];
+	} else {
+	    return twoDigit[n/10 - 2] + digitToEng[n%10];
+	}
+    }
 
-	if (n/10 == 1) return teen[n%10];
-	else return twoDigit[n/10 - 2] + digitToEng[n%10];
+    public static String threeDigitToEng(int n) {
+	if (n/100 > 0) {
+	    return n/100 + "hundred" + twoDigitToEng(n%100);
+	} else {
+	    return twoDigitToEng(n);
+	}
     }
     
     // pre-condition: 0 <= n < 1,000,000
     // post-condition: 0 -> "zero", ..., 25 -> "twenty-five", ..., 125 -> "one hundred twenty-five"
     public static String numToEng(int n) {
-	String[] suffix = {"thousand", "hundred"};
-	if (n < 10) return digitToEng(n);
-	else if (n < 100) return twoDigitToEng(n);
-	else return digitToEng(Integer.parseInt(Integer.toString(n).substring(0, 1))) + numToEng(Integer.parseInt(Integer.toString(n).substring(1)));
+	if (n < 1000) {
+	    return threeDigitToEng(n);
+	} else return threeDigitToEng(Integer.parseInt(Integer.toString(n).substring(0, 3))) + "thousand" + threeDigitToEng(Integer.parseInt(Integer.toString(n).substring(3)));
     }
 
     public static void main(String[] args){
-
+	System.out.print(numToEng(87));
     }
 
 }
