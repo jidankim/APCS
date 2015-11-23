@@ -1,0 +1,19 @@
+public class PigLatinEncrypt{
+    
+    // precondition: w may be null
+    public static String pigLatin(String w){
+	if (w == null) return "";
+	return w;
+    }
+    
+    public static void main(String[] args){
+	
+	while(!StdIn.isEmpty()){
+	    String word = StdIn.readString();
+	    word = null;
+	    System.out.println(pigLatin(word));
+	}
+	System.out.println();
+    }
+
+}
