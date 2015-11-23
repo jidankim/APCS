@@ -6,7 +6,8 @@ public class PigLatinEncrypt{
     // postcondition: returns true if w beigns with either a, e, i, o, u.
     //                returns false otherwise
     public static boolean beginsWithVowel(String w){
-
+	String vowels = "aeiou";
+	return vowels.indexOf(w.substring(0,1(( != -1;
     }
 
     // precondition: w may be null ir nay be an empty string
