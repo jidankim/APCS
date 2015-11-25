@@ -23,7 +23,11 @@ public class PigLatinEncrypt{
     public static int firstVowelPos(String w){
 	String vowels = "aeiouy";
 	for (int i = 1; i < w.length(); i++){
-		if (vowels.indexOf(w.substring(i,i+1)) != -1) return i;
+	    if (beginsWithVowel(w.substring(i), vowels)){
+		if (!w.substring(i,i+1).equals("u") || !w.substring(i-1,i).equals("q")){
+		    return i;
+		}
+	    }
 	}
 	return -1;
     }
@@ -32,7 +36,7 @@ public class PigLatinEncrypt{
     //               w contains only lower case letters
     public static String pigLatin(String w){
 	if (w == null || w.length() == 0) return ""; // short-circuit eval
-	if (beginsWithVowel(w)) return w += "ay";
+	if (beginsWithVowel(w)) return w += "way";
 	else{
 		int pos = firstVowelPos(w);
 		if (pos != -1) w = w.substring(pos) + w.substring(0, pos) + "ay";
