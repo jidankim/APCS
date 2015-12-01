@@ -38,4 +38,17 @@ public class Sorts{
 	return count;
     }
 
+    public static void bubbleSort(Comparable[] x){
+	int N = x.length;
+	for (int i = 0; i < N - 1; i++) {
+	    for (int j = 0; j < N - i - 1; j++) {
+		if (x[j].compareTo(x[j+1]) > 0) {
+ 		    Comparable temp = x[j+1];
+		    x[j+1] = x[j];
+		    x[j] = temp;
+		}
+	    }
+	}
+    }
+
 }

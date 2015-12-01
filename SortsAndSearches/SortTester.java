@@ -39,6 +39,9 @@ public class SortTester{
 
 	//System.out.println(x > y);
 	//System.out.println("ape" < "bat");
+	
+	Sorts.bubbleSort(heights);
+	ArrayIO.printArray(heights);
     }
 
 }
