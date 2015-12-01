@@ -29,8 +29,13 @@ public class Sorts{
     //                shuffling the array until it is sorted.
     //               bogoSort({1,5,3}) -> {1,3,5}
 
-    public static void bogoSort(Comparable [] x){
-	while (!isSorted(x)) shuffle(x);
+    public static int bogoSort(Comparable [] x){
+	int count = 0;
+	while (!isSorted(x)) {
+		shuffle(x);
+		count++;
+	}
+	return count;
     }
 
 }

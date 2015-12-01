@@ -9,11 +9,16 @@ public class SortTester{
 
     public static void main(String[] args){
 	int N = Integer.parseInt(args[0]);
-	int[] a = ArrayIO.intArray(N);
-	Sorts.shuffle(a);
-	bogoSort(a);
-	
-	
+	int M = Integer.parseInt(args[1]);
+	int count = 0;
+
+	for (int i = 0; i < M; i++) {
+		Integer[] a = ArrayIO.intArray(N);
+		Sorts.shuffle(a);
+		if (Sorts.isSorted(a)) count++;
+	}
+
+	System.out.println("Probability of array of size N is sorted after 1 shuffle is " + count*1.0/M);
 
 	String[] names = {"abe", "mary", "betty", "michael"};
 	Integer[] ages = {3, 19, 4, 11};
