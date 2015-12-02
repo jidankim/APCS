@@ -17,14 +17,11 @@ public class Stats{
 	for (int i = 0; i < N; i++) {
 	    sos += (mean - a[i]) * (mean - a[i]);
 	}
-	return sos;
+	return sos / (N - 1);
     }
 
     public static double stdDeviation(int[] a){
-	double sos = variance(a);
-	int N = a.length;
-	
-	return Math.sqrt(sos/(N - 1));
+	return Math.sqrt(variance(a));
     }
 
 }
