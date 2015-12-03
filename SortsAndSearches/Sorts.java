@@ -67,4 +67,31 @@ public class Sorts{
 	}	
     }
 
+    public static void selectionSort(Comparable[] x){
+	int N = x.length;
+	for (int pass = 0; pass < N - 1; pass++){
+	    int curMin = pass;
+	    for (int j = pass + 1; j < N; j++){
+		if (x[curMin].compareTo(x[j]) > 0) curMin = j;
+	    }
+	    Comparable temp = x[pass];
+	    x[pass] = x[curMin];
+	    x[curMin] = temp;
+	}
+    }
+
+    public static void insertionSort(Comparable[] x){
+	int N = x.length;
+	for (int i = 0; i < N; i++){
+	    for (int j = i; j > 0; j--){
+		if (x[j].compareTo(x[j-1]) < 0) {
+		    Comparable temp = x[j];
+		    x[j] = x[j-1];
+		    x[j-1] = temp;
+		}
+		else break;
+	    }
+	}
+    }
+
 }
