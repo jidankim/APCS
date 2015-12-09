@@ -13,13 +13,15 @@ public class Point{
     }
 
     public Point(int x, int y) {
-	_x = x;
-	_y = y;
+	// this(); // default constructor
+	// System.out.println(this);
+	move(x, y);
+	// _x = x;
+	// _y = y;
     }
 
     public Point(Point other) {
-	_x = other.getX();
-	_y = other.getY();
+	this(other.getX(), other.getY());
     }
 
     // accessor methods: report back the state of an object (read only access)
@@ -37,7 +39,7 @@ public class Point{
 
     // @override
     // post condition : "(x,y)"
-    public String toString(Point p) {
+    public String toString() {
 	return "(" + _x + "," + _y + ")";
     }
 
@@ -48,19 +50,41 @@ public class Point{
     }
 
     public void move(int x, int y) {
-	_x += x;
-	_y += y;
+	_x = x;
+	_y = y;
+    }
+
+    public void translate(int dx, int dy) {
+	_x += dx;
+	_y += dy;
     }
 
     public static void main(String[] args) {
+	Point z = new Point(2, 3);
+	System.out.println(z);
+
+	Point a = new Point(1, 1);
+	Point b = new Point(a);
+	System.out.println(b);
+
+	/*
+	Object d = new Point();
+	String t = "A: " + d;
+	System.out.println(t);
+
+	((Point)d).move(1,1);
+	System.out.println(d);
+
 	Point a = new Point();
 	Point b = new Point();
-	
+	Point c = a;
+
 	System.out.println(a);
 	System.out.println(b);
-	
-	System.out.println(a.getX());
-	System.out.println(a.getY());
+	System.out.println(c);
+	a.move(1,1);
+	System.out.println(a);
+	*/
     }
 
 }
