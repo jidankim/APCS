@@ -33,14 +33,20 @@ public class Point{
 	return _y;
     }
 
-    //public Point getLocation() {
-	
-	//}
-
     // @override
     // post condition : "(x,y)"
     public String toString() {
 	return "(" + _x + "," + _y + ")";
+    }
+
+    // postconditon: return true if the points
+    // have equal x and y coordinates.
+    public boolean equals(Object other){
+	if (other instanceOf Point) {
+	    Point other2 = (Point)other;
+	    return _x == other2.getX() && _y == other2.getY();
+	} 
+	return false;
     }
 
     // @override
@@ -49,10 +55,34 @@ public class Point{
 	return false;
     }
 
+    public boolean equals(Object o) {
+	if (!o.instanceOf(Point)) return false;
+	else if (_x == p.getX() && _y == p.getY()) return true;
+	return false;
+    }
+
     public void move(int x, int y) {
 	_x = x;
 	_y = y;
     }
+
+    // postcondition: use StdDraw.java to draw the point. 
+    //                Use a black circle to represent the point.
+    public void draw(){
+	StdDraw.filledCircle(_x, _y, 0.25); 
+    }
+
+    //postcondition: returns a copy of the point at the same location
+    public Point getLocation(){
+	return new Point(_x, _y);
+    }
+
+    // preconditon: other != null
+    // postcondition: sets the location of the point to the specified 
+    //                location
+    public void setLocation(Point other){
+	move(other.getX(), other.getY());
+    }    
 
     public void translate(int dx, int dy) {
 	_x += dx;
@@ -60,31 +90,22 @@ public class Point{
     }
 
     public static void main(String[] args) {
-	Point z = new Point(2, 3);
-	System.out.println(z);
+	//Point z = new Point(2, 3);
+	//System.out.println(z);
 
 	Point a = new Point(1, 1);
 	Point b = new Point(a);
-	System.out.println(b);
+	System.out.println(b); 
 
-	/*
-	Object d = new Point();
-	String t = "A: " + d;
-	System.out.println(t);
+	//Integer x = 3;
+	//Integer y = null;
+	//String z = "ab";
 
-	((Point)d).move(1,1);
-	System.out.println(d);
-
-	Point a = new Point();
-	Point b = new Point();
-	Point c = a;
-
-	System.out.println(a);
-	System.out.println(b);
-	System.out.println(c);
-	a.move(1,1);
-	System.out.println(a);
-	*/
+	//System.out.println(x.equals(x));
+	//	System.out.println(x.equals(3));
+	//	System.out.println(x.equals(y));
+	//	System.out.println(y.equals(x));
+	//System.out.println(x.equals(z));
     }
 
 }
