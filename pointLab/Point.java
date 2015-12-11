@@ -42,22 +42,10 @@ public class Point{
     // postconditon: return true if the points
     // have equal x and y coordinates.
     public boolean equals(Object other){
-	if (other instanceOf Point) {
+	if (other instanceof Point) {
 	    Point other2 = (Point)other;
 	    return _x == other2.getX() && _y == other2.getY();
 	} 
-	return false;
-    }
-
-    // @override
-    public boolean equals(Point p) {
-	if (_x == p.getX() && _y == p.getY()) return true;
-	return false;
-    }
-
-    public boolean equals(Object o) {
-	if (!o.instanceOf(Point)) return false;
-	else if (_x == p.getX() && _y == p.getY()) return true;
 	return false;
     }
 
