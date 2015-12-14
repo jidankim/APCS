@@ -6,10 +6,14 @@ public class RationalNumber{
     // assume d != 0
     public RationalNumber(int n, int d) {
 	if (d == 0) throw new ArithmeticException("denominator can't be 0");
-	boolean isPos = n * d >= 0;
-	if (isPos) n = Math.abs(n);
-        else n = -1 * Math.abs(n);
-	d = Math.abs(d);
+	//	boolean isPos = n * d >= 0;
+	// 	if (isPos) n = Math.abs(n);
+	//        else n = -1 * Math.abs(n);
+	//	d = Math.abs(d);
+	if (d < 0) {
+	    _n = -n;
+	    _d = -d;
+	}
 	_n = n;
 	_d = d;
     }
@@ -19,9 +23,26 @@ public class RationalNumber{
 	_d = r._d;
     }
 
+    // accessor methods
+    public int getNumerator() {
+	return _n;
+    }
+
+    public int getDenominator() {
+	return _d;
+    }
+
     // @override
     public String toString() {
 	return _n + "/" + _d;
+    }
+
+    public boolean equals(Object other) {
+	if (other instanceof RationalNumber) {
+	    RationalNumber other2 = (RationalNumber)other;
+	    return _n == other2.getNumerator() && _d == other2.getDenominator();
+	}
+	return false;
     }
 
     public RationalNumber negate() {
