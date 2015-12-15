@@ -14,13 +14,16 @@ public class RationalNumber{
 	    _n = -n;
 	    _d = -d;
 	}
-	_n = n;
-	_d = d;
+	int gcd = MyMath.gcd(Math.abs(n), d);
+	if (gcd == 0) gcd = 1; // O(logN)
+	_n = n / gcd;
+	_d = d / gcd;
     }
 
     public RationalNumber(RationalNumber r) {
 	_n = r._n;
 	_d = r._d;
+	// this(r._n, r._d);
     }
 
     // accessor methods
@@ -47,6 +50,10 @@ public class RationalNumber{
 
     public RationalNumber negate() {
 	return new RationalNumber(-1 * _n, _d);
+    }
+
+    public RationalNumber add(RationalNumber other) {
+	 
     }
 
     public static void main(String[] args) {
