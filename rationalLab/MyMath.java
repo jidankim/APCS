@@ -29,9 +29,9 @@ public class MyMath{
 	return !isOdd(n);
     }
 
-    public static boolean isPrimte(int n){
+    public static boolean isPrime(int n){
 	if (n < 2) return false;
-	for (int d = 2; d <= n/d; d=+)
+	for (int d = 2; d <= n/d; d++)
 	    if (n % d == 0) return false;
 	return true;
     }
