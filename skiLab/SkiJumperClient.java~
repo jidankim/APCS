@@ -1,0 +1,15 @@
+public class SkiJumperClient {
+    
+    public static void main(String[] args) {
+	SkiJumper bob = new SkiJumper("Bob", "Smith");
+	System.out.println("Jumps: " + bob.getJumps());
+	System.out.println("Hours: " + bob.getHoursTrained());
+	for (int i = 0; i < 5; i++) {
+	    bob.fly();
+	    bob.train(2*i);
+	}
+	System.out.println("Jumps: " + bob.getJumps());
+	System.out.println("Hours: " + bob.getHoursTrained());
+    }
+    
+}
