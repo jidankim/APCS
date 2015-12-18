@@ -1,0 +1,22 @@
+public class BarCode implements Comparable {
+
+	//instance variables
+	private String _zip;
+	private int _checkDigit;
+
+	private final static String[] _codes = {
+
+	//constructors
+	//precondition: zip.length() = 5 and zip contains only digits.
+	//post conditions: throws a runtime exception zip is not the correct
+//			   length or zip contains a non digit
+//			   _zip and _checkDigit are intialized
+	public BarCode(String zip) {
+		
+	}
+
+	//postcondition: Creats a copy of a bar code.
+	public BarCode(BarCode x) {
+
+	}
+}
