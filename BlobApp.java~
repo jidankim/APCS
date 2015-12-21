@@ -1,0 +1,9 @@
+import wheels.users.*;
+
+public class BlobApp extends Frame {
+    
+    public static void main(String[] args) {
+	BlobApp app = new BlobApp();
+    }
+
+}
