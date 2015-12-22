@@ -13,8 +13,8 @@ public class Blob extends Ellipse {
 	_rightEye = new Ellipse(java.awt.Color.BLACK);
 	_leftEye.setSize(30,30);
 	_rightEye.setSize(30,30);
-	_leftEye.setLocation(x+15, y+10);
-	_rightEye.setLocation(x+55, y+10);
+	_leftEye.setLocation(x+20, y+20);
+	_rightEye.setLocation(x+50, y+20);
     }
 
     public Ellipse getLeftEye(){
@@ -27,7 +27,6 @@ public class Blob extends Ellipse {
 
     public void mousePressed(java.awt.event.MouseEvent e){
 	this.setFillColor(java.awt.Color.BLUE);
-
     }
 
     public void mouseReleased(java.awt.event.MouseEvent e){
