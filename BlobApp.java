@@ -7,7 +7,7 @@ public class BlobApp extends Frame {
     
     public BlobApp() {
 	super();
-	_blob = new Blob(0,0);
+	_blob = new Blob(10,100);
     }
     
     public static void main(String[] args) {
