@@ -1,0 +1,43 @@
+public class ArrayList<E> implements List<E>{
+
+    private E[] _list;
+    private int _size;
+
+    //constructor
+    public ArrayList() {
+	_list = (E[]) (new Object[2]);
+	_size = 0;
+    }
+
+    private void resize() {
+	E[] temp = (E[])(new Object[size() * 2]);
+    }
+
+    public boolean add(E x) {
+	if (size() == _list.length)
+	    resize();
+	_list[size()] = x;
+	_size++;
+	return true;
+    }
+    public E get(int index){
+	return null;
+    }
+    public E set(int index, E x){
+	return null;
+    }
+    public int size(){
+	return _size;
+    }
+
+    public String toString() {
+	String ans = "[";
+	for (int i = 0; i < size(); i++)
+	    ans += _list[i] + ", ";
+	if (size() > 0)
+	    ans = ans.substring(0, ans.length() - 2);
+	ans += "]";
+	return ans;
+    }
+
+}
