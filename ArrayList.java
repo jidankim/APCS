@@ -25,13 +25,19 @@ public class ArrayList<E> implements List<E>{
     }
 
     public E get(int index){
-	if (index < 0 || index > size()) 
-	return null;
+	if (index < 0 || index > size())
+	    throw new java.lang.IndexOutOfBoundException("index < 0 || index >= size()");
+	return _list[index];
     }
 
     public E set(int index, E x){
-	return null;
+	if (index < 0 || index > size())
+	    throw new java.lang.IndexOutOfBoundException("index < 0 || index >= size()");
+	E temp = get(index);
+	_list[index] = x;
+	return temp;
     }
+
     public int size(){
 	return _size;
     }
