@@ -1,0 +1,16 @@
+import wheels.users.*;
+
+public class SnowmanApp extends Frame {
+
+	private MeltingSnowman _meltingSnowman;
+
+	public SnowmanApp() {
+		super();
+		_meltingSnowman = new MeltingSnowman(300, 300);
+	}
+
+	public static void main(String[] args) {
+		SnowmanApp app = new SnowmanApp();
+	}
+
+}

@@ -7,9 +7,13 @@ public class TalkativeBlob extends Blob {
     public TalkativeBlob(int x, int y) {
 	super(x,y);
 	_bubble = new ConversationBubble("Hello!", 
-					 ConversationalBuuble.TAIL_DIR_LEFT);
-	_bubble.setLocation(x,y + this.getHeight());
+					 ConversationBuuble.TAIL_DIR_LEFT);
+	_bubble.setLocation(x + getWidth()/2, y - getHeight());
 	_bubble.hide();
+    }
+
+    public ConversationBubble getBubble() {
+	return _bubble;
     }
 
     public void mousePressed(java.awt.event.MouseEvent e) {
