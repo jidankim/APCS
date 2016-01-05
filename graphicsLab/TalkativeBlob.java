@@ -7,12 +7,12 @@ public class TalkativeBlob extends Blob {
     public TalkativeBlob(int x, int y) {
 	super(x,y);
 	_bubble = new ConversationBubble("Hello!", 
-					 ConversationalBuuble.TAIL_DIR_LEFT);
+					 ConversationBubble.TAIL_DIR_LEFT);
 	_bubble.setLocation(x + getWidth()/2, y - getHeight());
 	_bubble.hide();
     }
 
-    public ConservationBubble getBubble() {
+    public ConversationBubble getBubble() {
 	return _bubble;
     }
 

@@ -6,7 +6,7 @@ public class Gold extends Rock {
 	super(x,y);
     }
     
-    public void mouseClicked(java.awt.event.MouseEvent e) {
+    public void mousePressed(java.awt.event.MouseEvent e) {
 	this.setColor(java.awt.Color.YELLOW);
     }
 
