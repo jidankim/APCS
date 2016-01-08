@@ -53,6 +53,24 @@ public class ArrayListPrac {
 	    L.set(L.size() - i - 1, L.set(i, L.get(L.size() - i - 1)));
     }
 
+    public static List<Integer> merge(List<Integer> x, List<Integer> y) {
+	List<Integer> ans = new ArrayList<Integer>();
+	int i = 0;
+	int j = 0;
+	while (i < x.size() && j < y.size()) {
+	    if (x.get(i) < y.get(j)) {
+		ans.add(x.get(i));
+		i++
+	    } else {
+		ans.add(y.get(j));
+		j++;
+	    }
+	}
+	while (i < x.size()) ans.add(x.get(i++));
+	while (j < y.size()) ans.add(y.get(j++));
+	return ans;
+    }
+
     public static void main(String[] args) {
 	ArrayList<Integer> L = new ArrayList<Integer>();
 	populate(L);

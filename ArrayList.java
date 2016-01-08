@@ -24,6 +24,39 @@ public class ArrayList<E> implements List<E>{
 	return true;
     }
 
+    /*
+      //version 1: directly use _list
+      public void add(int index, E x) {
+	  if (index < 0 || index > size())
+	      throw new IndexOutOfBoundsException("index < 0 || index > size()");
+	  add(x);
+	  for (int i = size() - 1; i > index; i--) {
+	      E temp = _list[i-1];
+	      _list[i-1] = _list[i];
+	      _list[i] = temp;
+	  }
+      }
+     */
+
+    //version2 : do not directly use _list. Use set() and get()
+    public void add(int index, E x) {
+	if (index < 0 || index > size())
+	    throw new IndexOutOfBoundsException("index < 0 || index > size()");
+	add(x);
+	for (int i = size() - 1; i > index; i--)
+	    set(i, set(i-1, get(i)));
+    }
+
+    public E remove(int index) {
+	E removed = get(index);
+	for (int i = 0; i < size() - 1; i++)
+	    _list[i] = _list[i+1];
+	    //set(i, get(i+1));
+	set(size() - 1, null);
+	_size--;
+	return removed;
+    }
+
     public E get(int index){
 	if (index < 0 || index > size())
 	    throw new java.lang.IndexOutOfBoundException("index < 0 || index >= size()");
