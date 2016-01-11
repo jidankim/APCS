@@ -1,0 +1,60 @@
+/*
+For example, if the size of the concentration board is requested to be 4, the
+board will have 16 Tiles. The one-dimensional array, gameboard, can be viewed
+as a 4-by-4 concentration board as follows:
+
+   gameboard[0]		  gameboard[1]		gameboard[2]	gameboard[3]
+   gameboard[4]		  gameboard[5]		gameboard[6]	gameboard[7]
+   gameboard[8]		  gameboard[9]		gameboard[10]	gameboard[11]
+   gameboard[12]	  gameboard[13]		gameboard[14]	gameboard[15]
+
+An incomplete implementation of the Board class appear below.
+ */
+
+public class Board{
+       private Tile [] _gameBoard; // concentration board of Tiles
+       private int _size;   // number of Tiles on board
+       private int _rowLength; // number of Tiles printed in a row
+       private int _numberOfTilesFaceUp; // number of Tiles face-up
+       private FooList _possibleTileValues; // possible Tile images
+
+       // Constructs n by n concentration board of Tiles whose values
+       // are chosen from the already filled FooList list.
+       // Precondition: n is the length of a side of the board.
+       // n is an even positive integer.
+       // FooList contains at least n * n / 2 strings.
+       public Board(int n, FooList list){}
+
+
+       // Randomly fils this concentration board with tiles. The number
+       // of distinct tiles used on the board is size / 2.
+       // Any one tile image appears exactly twice.
+       // Precondition: number of positions on board is even.
+       // possibleTileValues contains at least size / 2 elements.
+       private void fillBoard(){}
+
+       //Precondition: Tile in position p is face-down.
+       //Postcondition: Tile in postion p is face-up.
+       public void lookAtTile(int p){}
+
+       //Checks whether the Tile in pos1 and pos2 have the same image.
+       // If they do, the Tiles are turned face-up. If not, the Tileas
+       // are turned face-down.
+       // Precondition: _gameBoard[pos1] is face-up.
+       // _gameBoard[pos2] is face-up.
+       public void checkMatch(int pos1, int pos2){}
+
+       // Board is printed for the player. If the Tile is turned face-up,
+       // the image is printed. If the Tile is turned face-down,
+       // the Tile position is printed.
+       public void printBoard(){}
+
+       // Returns Tile in postion pos.
+       public Tile pickTile(int pos){}
+
+       // Returns right-justified number with p places as a string.	
+       public String format(String word, int p){}
+
+       // Returns true if all Tiles are turned face-up, false otherwise.
+       public boolean allTiles(){}
+}
