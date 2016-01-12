@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 Implement a Tile object.
 
@@ -53,6 +56,16 @@ public class Tile{
 	Tile t1 = new Tile("cat");
 	Tile t2 = new Tile("dog");
 	Tile t3 = new Tile("cat");
+
+	ArrayList<Tile> tiles = new ArrayList<Tile>();
+	tiles.add(t1);
+	tiles.add(t2);
+	tiles.add(t3);
+
+	System.out.println(tiles);
+	for (Tile tile: tiles)
+	    tile.turnFaceDown();
+	System.out.println(tiles);
 
     }
 
