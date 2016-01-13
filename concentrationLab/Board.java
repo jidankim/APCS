@@ -57,12 +57,67 @@ public class Board{
 	    _gameBoard.set(i, _gameBoard.set(r, _gameBoard.get(i)));
 	}
     }
+ 
 
+    // version 2: 
+    /*
+    private void fillBoard(){
+	for (int i = 0 ; i < _size; i += 2){
+	    String foo = _possibleTileValues.removeRandomFoo();
+	    int r = (int)(Math.random() * _gameBoard.size()) + 1;
+	    if (i == 0) _gameBoard.add(new Tile(foo));
+	    else _gameBoard.add(r,new Tile(foo));
+	    r = (int)(Math.random() * _gameBoard.size()) + 1;
+	    _gameBoard.add(r,new Tile(foo));
+	}
+    }
+    */
+    /*
+    //version 3:
+    private void fillBoard(){
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
+        for (int i = 0; i < _size; i++){
+            indexes.add(i);
+            _gameBoard.add(null);
+          
+        }
+        for(int i  = 0; i < _possibleTileValues.size(); i++){
+            String current = _possibleTileValues.getFoo(i);
+            int randNumber = (int) (Math.random() * indexes.size());
+            int randIndex1 = indexes.remove(randNumber);
+            _gameBoard.set(randIndex1, new Tile(current));
+            randNumber = (int) (Math.random() * indexes.size());
+            randIndex1 = indexes.remove(randNumber);
+            _gameBoard.set(randIndex1, new Tile(current));
+        }
+    }
+ */
+ // version 4
+/*
+ private void fillBoard(){
+        boolean[] posUsed = new boolean[_size];
+        for(int i = 0; i < _size; i++){
+            
+        }
+        for (int image = 0; image < _size/2; image++){
+            String t = _possibleTileValues.getFoo(image);
+            for (int i = 0; i < 2; i++){
+                int pos = (int) (Math.random() * _size);
+                while(posUsed[pos]){
+                    pos = (int) (Math.random() * _size);
+                }
+                _gameBoard.add(pos,new Tile(t));
+                posUsed[pos] = true;
+            }
+        }
+    }   
+*/
        //Precondition: Tile in position p is face-down.
        //Postcondition: Tile in postion p is face-up.
        //               _numberOfTilesFaceUp is updated.
        public void lookAtTile(int p){
-
+	   pickTile(p).turnFaceUp();
+	   _numberOfTilesFaceUp++;
        }
 
        //Checks whether the Tile in pos1 and pos2 have the same image.
@@ -73,7 +128,17 @@ public class Board{
        // Precondition: _gameBoard.get(pos1) is face-up.
        //               _gameBoard.get(pos2) is face-up.
     public void checkMatch(int pos1, int pos2){
-
+	Tile tile1 = pickTile(pos1);
+	Tile tile2 = pickTile(pos2);
+	if (pos1 == pos2) { // if (tile1 == tile2)
+	    tile1.turnFaceDown();
+	    _numberOfTilesFaceUp--;
+	}
+	if (!tile1.equals(tile2)) {
+	    tile1.turnFaceDown();
+	    tile2.turnFaceDown();
+	    _numberOfTilesFaceUp -= 2;
+	}
     }
 
        // Board is printed for the player. If the Tile is turned face-up,
@@ -81,12 +146,21 @@ public class Board{
        // the Tile position is printed. The format method is used in
        // this function.
     public void printBoard(){
-
+	for (int i = 0; i < _size; i++) {
+	    if ( i % _rowLength == 0)
+		System.out.println();
+	    Tile t = pickTile(i);
+	    if (t.isFaceUp())
+		System.out.print(format(t.showFace(), t.showFace().length() + 2));
+	    else
+		System.out.print(format(i + "", t.showFace().length() + 2));
+	}
+	System.out.println();
     }
 
        // Returns Tile in postion pos.
     public Tile pickTile(int pos){
-
+	return _gameBoard.get(pos);
     }
 
        // Returns right-justified word with p places as a string.
@@ -95,17 +169,20 @@ public class Board{
        // format("cat",5) -> "  cat"
        // Precondition: p >= word.length()
       public String format(String word, int p){
-
+	  String ans = word;
+	  while (ans.length() < p)
+	      ans = " " + ans;
+	  return ans;
        }
 
        // Returns true if all Tiles are turned face-up, false otherwise.
        public boolean allTiles(){
-
+	   return _numberOfTilesFaceUp == _size;
        }
 
     public static void main(String [] args){
 
-       /*
+       
         String [] foos = {"cat","dog"};
 	FooList list = new FooList(foos,3);
 	Board board  = new Board(2,list);
@@ -114,7 +191,7 @@ public class Board{
 	//board.lookAtTile(2);
 	board.lookAtTile(3);
 	board.printBoard();
-      */
+      
     }
 
 }

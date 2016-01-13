@@ -27,7 +27,7 @@ public class FooList{
     //Constructor implementation initializes 
     //_fooLength (the length of the strings in FooList's list) and
     //_availableFoos (FooList's list of strings).
-    public FooList(ArrayList<String> foos,int len){
+    public FooList(String[] foos,int len){
 	_fooLength = len;
 	_availableFoos = new ArrayList<String>();
 	fillFooList(foos);
@@ -115,7 +115,7 @@ public class FooList{
     }
 
     public static void main(String[] args) {
-	String[] foos = {"cat","bat","eel","dog","cow","pig","cat","crow"};
+        String[] foos = {"cat","bat","eel","dog","cow","pig","cat","crow"};
 	FooList fooList = new FooList(foos, 3);
 	/*
 	  System.out.println(fooList);
