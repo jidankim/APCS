@@ -1,0 +1,220 @@
+One way of encrypting a word is to encrypt pairs of letters in the word
+together. A scheme to do this is to fill a 6 x 6 square with the 26 capital
+letters of the alphabet and the ten digits ’0 ’ through ’9 ’. Each letter and
+digit appears exactly once in the square.
+
+To encrypt a letter pair, the rectangle formed by the two letters is used.
+Each letter of the original pair is replaced by the letter located on the same
+row and in the other corner of the rectangle. If both letters happen to be in
+the same row or column, the letters are swapped.
+
+For example, in the following arrangement AP is encrypted as DM.
+
+    S   T   U   V   W   X
+
+    Y   Z   0   1   2   3
+
+    4   5   6   7   8   9
+
+    A---B---C---D   E   F
+    |           |
+    G   H   I   J   K   L
+    |           |
+    M---N---O---P   Q   R
+
+
+Consider the following declaration for a class that uses this scheme to 
+encrypt a word.
+
+public class Point{
+  private int _row, _col;
+
+  // sets row to newRow, col to newCol
+  public Point(int row, int col){
+  	 _row = row; 
+	 _col = col;
+  }
+  public int getRow(){
+        return _row;
+  }
+    
+  public int getCol(){
+        return _col;
+  }
+
+  public String toString(){
+        return "row = " + getRow() + "\tcol= " + getCol();
+  }
+}
+
+
+
+
+public class Encryptor {
+       
+   // private instance variables
+   private String[][] _myMat;       
+   
+   final private static String LETTERS_DIGITS = "STUVWXYZ0123456789ABCDEFGHIJKLMNOPQR";
+
+   // fills the matrix with the 26 letters of the alphabet       
+   // and the 10 digits ’ 0 ’ through ’ 9 ’
+   public Encryptor(){
+   	 
+   }
+
+   // returns an encrypted form of the word
+   public String encryptWord(String word){}
+
+   // returns an encrypted form of the pair
+   public String encryptTwo(String pair){}
+
+   // returns the coordinates of ch in the 2-dimensional array
+   public Point getCoordinates(String ch){}
+
+    public String toString(){
+	String ans = "";
+	for (int i = 0; i < _myMat.length; i++){
+	    for (int j = 0; j < _myMat[i].length; j++)
+		ans += _myMat[i][j] + " ";
+	    ans += "\n";
+	}
+	return ans;
+    }
+
+ public static void main(String [] args){
+	Encryptor key = new Encryptor();
+	System.out.println(key);
+	/*
+	Point p1 = key.getCoordinates("P");
+	Point p2 = key.getCoordinates("8");
+	Point p3 = key.getCoordinates("M");
+	System.out.println("coordinates of P: " + p1);
+	System.out.println("coordinates of 8: " + p2);
+	System.out.println("coordinates of M: " + p3);
+	//  Letters: BR NE ET RE TH PR GG 
+	//Encrypted: FN QB BW QF HT RP GG     
+	String [] pairs = {"BR","NE", "ET", "RE", "TH", "PR", "GG"};
+	for (int i = 0; i < pairs.length; i++)
+	    System.out.println(pairs[i] + ": " + key.encryptTwo(pairs[i]));
+
+	System.out.println(key.encryptWord("COMPUTER"));
+	System.out.println(key.encryptWord("SCIENCE"));
+	System.out.println(key.encryptWord("STUDENTS"));
+	*/
+    }
+
+}
+
+(a). Write the constructor Encryptor. It should create a 6 x 6 2-dimensional
+     String array and initialize it such that  _myMat has the values below.
+     _myMat of Encryptor 
+     S T U V W X 	 
+     Y Z 0 1 2 3 	 
+     4 5 6 7 8 9 	 
+     A B C D E F 	     
+     G H I J K L 
+     M N O P Q R
+     // Copies the values from LETTERS_DIGITS into _myMat.
+     public Encryptor(){}
+
+(b) Write member function getCoordinates, as started below. getCoordinates 
+    takes a given letter or digit and returns its row and column in the 
+    2-dimensional array. Assume that the parameter ch is a capital letter in 
+    the range ’A ’ through ’Z ’ or a digit in the range ’0 ’ through ’9 ’.
+    The following example shows the point locations of String ch in the given
+     matrix.
+
+     _myMat of Encryptor     ch		Point coordinates
+     S T U V W X 	     P 	    	 row = 5 col = 3
+     Y Z 0 1 2 3 	     8 		 row = 2 col = 4
+     4 5 6 7 8 9 	     M 		 row = 5 col = 0
+     A B C D E F 	     
+     G H I J K L 
+     M N O P Q R
+
+     Complete function getCoordinates below.
+     // precondition: ch is a capital letter or a digit
+     // postcondition: returns the row and column number of the
+     // location of ch in myMat
+     public Point getCoordinates(String ch){
+
+
+
+
+
+(c) Write member function encryptTwo, as started below. encryptTwo is passed a 
+    two-character string and returns an encoded two-character string.
+    The encoding of a letter pair is formed as follows.
+    1. If both letters are in the same row or column, swap the two letters.
+    2. Otherwise, find the other two corners of the rectangle formed by the two
+       letters. Each letter of the original pair is replaced by the letter 
+       located on the same row and in the other corner of the rectangle.
+    For example, to encrypt a letter pair, say NE, look at the rectangle with
+    corners N and E. The encrypted letter pair is QB because Q is the letter at
+    the other corner on the same row as N, and B is the letter at the other 
+    corner on the same row as E.
+
+    	       	S   T   U   V   W   X
+    
+		Y   Z   0   1   2   3
+    
+		4   5   6   7   8   9
+    
+		A   B---C---D---E   F
+    		    |           |
+    		G   H   I   J   K   L
+    		    |           |  
+    		M   N---O---P---Q   R
+
+
+      Letters: BR NE ET RE TH PR GG 
+    Encrypted: FN QB BW QF HT RP GG 
+
+  In writing encryptTwo, you may call getCoordinates specified in part (b).
+  Assume that getCoordinates works as specified, regardless of what you wrote
+  in part (b).
+  
+  Complete function encryptTwo below.
+  // precondition: pair.length() is 2
+  // postcondition: returns an encoded two-character string
+  public String encryptTwo(String pair)
+
+
+
+ (d) Write member function encryptWord, as started below. encryptWord takes a
+     word parameter and returns a String that contains the encryption of that
+     word. Every two letters of the word are examined and encrypted by 
+     replacing the original letters with those located in the opposite corners
+     of the rectangle formed by the two letters. If the original word contains
+     an odd number of letters the last letter is unchanged.
+
+     The following are examples of encrypted words using the 2-dimensional 
+     array shown below.
+
+     	   	 S T U V W X
+		 Y Z 0 1 2 3
+		 4 5 6 7 8 9
+		 A B C D E F
+		 G H I J K L
+		 M N O P Q R
+	
+	     Word:	CO MP UT ER	SC IE NC E	ST UD EN TS
+	Encrypted:	OC PM TU FQ	UA KC OB E	TS VC BQ ST
+
+
+    In writing encryptWord, you may call encryptTwo specified in part (c). 
+    Assume that encryptTwo works as specified, regardless of what you wrote in
+    part (c).
+   
+    Complete function encryptWord below.
+
+    // precondition: word contains only capital letters "A" through "Z"
+    // 		     and digits "0" through "9".
+    // postcondition: returns an encrypted version of word, in which every
+    // 		      two letters have been examined and encrypted by
+    //		      replacing the original letters with those located
+    //		      in the opposite corners of the rectangle formed by
+    //		      the two letters. If the original word contains an odd
+    //		      number of letters, the last letter is left unchanged.
+    public String encryptWord(String word) {}

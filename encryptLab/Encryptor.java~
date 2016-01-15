@@ -1,0 +1,55 @@
+public class Encryptor {
+       
+   // private instance variables
+   private String[][] _myMat;       
+   
+   final private static String LETTERS_DIGITS = "STUVWXYZ0123456789ABCDEFGHIJKLMNOPQR";
+
+   // fills the matrix with the 26 letters of the alphabet       
+   // and the 10 digits ’ 0 ’ through ’ 9 ’
+   public Encryptor(){
+   	 
+   }
+
+   // returns an encrypted form of the word
+   public String encryptWord(String word){}
+
+   // returns an encrypted form of the pair
+   public String encryptTwo(String pair){}
+
+   // returns the coordinates of ch in the 2-dimensional array
+   public Point getCoordinates(String ch){}
+
+    public String toString(){
+	String ans = "";
+	for (int i = 0; i < _myMat.length; i++){
+	    for (int j = 0; j < _myMat[i].length; j++)
+		ans += _myMat[i][j] + " ";
+	    ans += "\n";
+	}
+	return ans;
+    }
+
+ public static void main(String [] args){
+	Encryptor key = new Encryptor();
+	System.out.println(key);
+	/*
+	Point p1 = key.getCoordinates("P");
+	Point p2 = key.getCoordinates("8");
+	Point p3 = key.getCoordinates("M");
+	System.out.println("coordinates of P: " + p1);
+	System.out.println("coordinates of 8: " + p2);
+	System.out.println("coordinates of M: " + p3);
+	//  Letters: BR NE ET RE TH PR GG 
+	//Encrypted: FN QB BW QF HT RP GG     
+	String [] pairs = {"BR","NE", "ET", "RE", "TH", "PR", "GG"};
+	for (int i = 0; i < pairs.length; i++)
+	    System.out.println(pairs[i] + ": " + key.encryptTwo(pairs[i]));
+
+	System.out.println(key.encryptWord("COMPUTER"));
+	System.out.println(key.encryptWord("SCIENCE"));
+	System.out.println(key.encryptWord("STUDENTS"));
+	*/
+    }
+
+}
