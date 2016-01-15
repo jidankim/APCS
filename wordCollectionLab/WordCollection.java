@@ -56,11 +56,23 @@ public class WordCollection{
     // removes one instance of word from the collection if word is
     // present; otherwise, does nothing
     public void remove(String word){
+	int index = indexOf(word);
+	if (index == -1) return;
         _collection.remove(word);
     }
   
     public String toString(){
 	return _collection.toString();
+    }
+
+    public static void main(String [] args){
+	String [] words = {"cat","bat","dog","ape","zebra","dog","cat"};
+	WordCollection wc = new WordCollection(words);
+	System.out.println("Size: " + wc.size());
+	System.out.println("index of cat: " + wc.indexOf("cat"));
+	System.out.println("remove cat");
+	wc.remove("cat");
+	System.out.println("collection: " + wc);
     }
 
 }
